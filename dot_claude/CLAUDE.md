@@ -10,6 +10,14 @@ My personal knowledge base is an Obsidian vault at `~/Documents/secondbrain`. Fo
 
 When starting a conversation from `~` or any non-Aircall directory and the task involves notes, documentation, or personal knowledge work, default to operating within `~/Documents/secondbrain`.
 
+## Dotfiles
+
+Dotfiles are managed with [chezmoi](https://www.chezmoi.io/) and stored in `filipeestacio/mac-dotfiles`. Chezmoi is configured with `autoCommit` and `autoPush` enabled (`~/.config/chezmoi/chezmoi.toml`).
+
+- To add/update a dotfile: `chezmoi add <file>` (auto-commits and pushes)
+- To sync local edits back: `chezmoi re-add`
+- Source dir: `~/.local/share/chezmoi/`
+
 ## Workspaces
 
 | Path | Purpose |
