@@ -1,0 +1,33 @@
+[default]
+output = json
+
+[sso-session filipeestacio]
+sso_start_url = https://filipeestacio.awsapps.com/start
+sso_region = eu-west-1
+sso_registration_scopes = sso:account:access
+
+[profile filipeestacio]
+sso_session = filipeestacio
+sso_account_id = 888261199238
+sso_role_name = AdministratorAccess
+region = eu-west-1
+output = json
+
+[sso-session aircall]
+sso_start_url = https://d-90670a54ea.awsapps.com/start
+sso_region = us-east-1
+sso_registration_scopes = sso:account:access
+
+[profile aircall-sandbox]
+sso_session = aircall
+sso_account_id = 151305450671
+sso_role_name = 13001EngineeringAdmin
+region = us-west-2
+output = json
+
+[profile aircall-staging]
+sso_session = aircall
+sso_account_id = 886862221201
+sso_role_name = 13001EngineeringAdminStaging
+region = us-west-2
+output = json

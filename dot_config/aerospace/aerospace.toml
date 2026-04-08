@@ -1,0 +1,167 @@
+# Reference: https://nikitabobko.github.io/AeroSpace/guide#default-config
+
+config-version = 2
+
+after-startup-command = ['exec-and-forget sketchybar']
+
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+]
+
+start-at-login = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+automatically-unhide-macos-hidden-apps = false
+
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B",
+                         "C", "D", "E", "F", "G", "I", "M", "N", "O", "P", "Q",
+                         "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+on-mode-changed = []
+
+[key-mapping]
+    preset = 'qwerty'
+
+# Gap for sketchybar (height = 40)
+[gaps]
+    inner.horizontal = 0
+    inner.vertical =   0
+    outer.left =       0
+    outer.bottom =     0
+    outer.top =        40
+    outer.right =      0
+
+# All bindings use Hyper (cmd-alt-ctrl-shift) via CapsLock through Karabiner
+[mode.main.binding]
+    # Layout
+    cmd-alt-ctrl-shift-slash = 'layout tiles horizontal vertical'
+    cmd-alt-ctrl-shift-comma = 'layout accordion horizontal vertical'
+
+    # Focus (vim-style)
+    cmd-alt-ctrl-shift-h = 'focus left'
+    cmd-alt-ctrl-shift-j = 'focus down'
+    cmd-alt-ctrl-shift-k = 'focus up'
+    cmd-alt-ctrl-shift-l = 'focus right'
+
+    # Move window (arrow keys)
+    cmd-alt-ctrl-shift-left = 'move left'
+    cmd-alt-ctrl-shift-down = 'move down'
+    cmd-alt-ctrl-shift-up = 'move up'
+    cmd-alt-ctrl-shift-right = 'move right'
+
+    # Resize
+    cmd-alt-ctrl-shift-minus = 'resize smart -50'
+    cmd-alt-ctrl-shift-equal = 'resize smart +50'
+
+    # Switch workspace (1-9)
+    cmd-alt-ctrl-shift-1 = 'workspace 1'
+    cmd-alt-ctrl-shift-2 = 'workspace 2'
+    cmd-alt-ctrl-shift-3 = 'workspace 3'
+    cmd-alt-ctrl-shift-4 = 'workspace 4'
+    cmd-alt-ctrl-shift-5 = 'workspace 5'
+    cmd-alt-ctrl-shift-6 = 'workspace 6'
+    cmd-alt-ctrl-shift-7 = 'workspace 7'
+    cmd-alt-ctrl-shift-8 = 'workspace 8'
+    cmd-alt-ctrl-shift-9 = 'workspace 9'
+
+    # Switch workspace (A-Z, excluding H/J/K/L reserved for focus)
+    cmd-alt-ctrl-shift-a = 'workspace A'
+    cmd-alt-ctrl-shift-b = 'workspace B'
+    cmd-alt-ctrl-shift-c = 'workspace C'
+    cmd-alt-ctrl-shift-d = 'workspace D'
+    cmd-alt-ctrl-shift-e = 'workspace E'
+    cmd-alt-ctrl-shift-f = 'workspace F'
+    cmd-alt-ctrl-shift-g = 'workspace G'
+    cmd-alt-ctrl-shift-i = 'workspace I'
+    cmd-alt-ctrl-shift-m = 'workspace M'
+    cmd-alt-ctrl-shift-n = 'workspace N'
+    cmd-alt-ctrl-shift-o = 'workspace O'
+    cmd-alt-ctrl-shift-p = 'workspace P'
+    cmd-alt-ctrl-shift-q = 'workspace Q'
+    cmd-alt-ctrl-shift-r = 'workspace R'
+    cmd-alt-ctrl-shift-s = 'workspace S'
+    cmd-alt-ctrl-shift-t = 'workspace T'
+    cmd-alt-ctrl-shift-u = 'workspace U'
+    cmd-alt-ctrl-shift-v = 'workspace V'
+    cmd-alt-ctrl-shift-w = 'workspace W'
+    cmd-alt-ctrl-shift-x = 'workspace X'
+    cmd-alt-ctrl-shift-y = 'workspace Y'
+    cmd-alt-ctrl-shift-z = 'workspace Z'
+
+    # Workspace navigation
+    cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
+
+    # Mode entry: leader (Hyper+;) and move-to-workspace (Hyper+.)
+    cmd-alt-ctrl-shift-semicolon = 'mode leader'
+    cmd-alt-ctrl-shift-period = 'mode move'
+
+# Leader mode (Hyper+;): service operations, directional moves, join
+[mode.leader.binding]
+    # Service
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']
+    f = ['layout floating tiling', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # Move window directionally
+    shift-h = ['move left', 'mode main']
+    shift-j = ['move down', 'mode main']
+    shift-k = ['move up', 'mode main']
+    shift-l = ['move right', 'mode main']
+
+    # Join with container
+    h = ['join-with left', 'mode main']
+    j = ['join-with down', 'mode main']
+    k = ['join-with up', 'mode main']
+    l = ['join-with right', 'mode main']
+
+    # Move workspace to monitor
+    tab = ['move-workspace-to-monitor --wrap-around next', 'mode main']
+
+# Move-to-workspace mode (Hyper+.): send focused window to a workspace
+[mode.move.binding]
+    esc = 'mode main'
+
+    # Workspaces 1-9
+    1 = ['move-node-to-workspace 1', 'mode main']
+    2 = ['move-node-to-workspace 2', 'mode main']
+    3 = ['move-node-to-workspace 3', 'mode main']
+    4 = ['move-node-to-workspace 4', 'mode main']
+    5 = ['move-node-to-workspace 5', 'mode main']
+    6 = ['move-node-to-workspace 6', 'mode main']
+    7 = ['move-node-to-workspace 7', 'mode main']
+    8 = ['move-node-to-workspace 8', 'mode main']
+    9 = ['move-node-to-workspace 9', 'mode main']
+
+    # Workspaces A-Z
+    a = ['move-node-to-workspace A', 'mode main']
+    b = ['move-node-to-workspace B', 'mode main']
+    c = ['move-node-to-workspace C', 'mode main']
+    d = ['move-node-to-workspace D', 'mode main']
+    e = ['move-node-to-workspace E', 'mode main']
+    f = ['move-node-to-workspace F', 'mode main']
+    g = ['move-node-to-workspace G', 'mode main']
+    i = ['move-node-to-workspace I', 'mode main']
+    m = ['move-node-to-workspace M', 'mode main']
+    n = ['move-node-to-workspace N', 'mode main']
+    o = ['move-node-to-workspace O', 'mode main']
+    p = ['move-node-to-workspace P', 'mode main']
+    q = ['move-node-to-workspace Q', 'mode main']
+    r = ['move-node-to-workspace R', 'mode main']
+    s = ['move-node-to-workspace S', 'mode main']
+    t = ['move-node-to-workspace T', 'mode main']
+    u = ['move-node-to-workspace U', 'mode main']
+    v = ['move-node-to-workspace V', 'mode main']
+    w = ['move-node-to-workspace W', 'mode main']
+    x = ['move-node-to-workspace X', 'mode main']
+    y = ['move-node-to-workspace Y', 'mode main']
+    z = ['move-node-to-workspace Z', 'mode main']

@@ -1,0 +1,14 @@
+-- Left side
+require("items.apple")
+require("items.aerospace")
+require("items.front_app")
+
+-- Right side (ordered right-to-left, so clock is far right)
+require("items.clock")
+require("items.battery")
+require("items.volume")
+require("items.bluetooth")
+require("items.network")
+require("items.memory")
+require("items.cpu")
+require("items.media")

@@ -1,0 +1,16 @@
+#!/usr/bin/env lua
+
+-- Add SbarLua to the package cpath
+package.cpath = package.cpath .. ";/Users/" .. os.getenv("USER") .. "/.local/share/sketchybar_lua/?.so"
+
+-- Require the sketchybar module (global so all items can use it)
+sbar = require("sketchybar")
+
+-- Batch all initial config into a single message for performance
+sbar.begin_config()
+require("init")
+sbar.hotload(true)
+sbar.end_config()
+
+-- Run the event loop (required for callbacks to fire)
+sbar.event_loop()
