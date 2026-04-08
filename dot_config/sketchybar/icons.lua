@@ -46,6 +46,9 @@ local icons = {
   -- Clock
   clock = "\u{f017}",
 
+  -- Slack
+  slack = "\u{f198}",
+
   -- Misc
   loading = "\u{f110}",
 }

@@ -165,3 +165,10 @@ on-mode-changed = []
     x = ['move-node-to-workspace X', 'mode main']
     y = ['move-node-to-workspace Y', 'mode main']
     z = ['move-node-to-workspace Z', 'mode main']
+
+# Float Slack notification/call popups instead of tiling them
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+if.window-title-regex-substring = 'Huddle|Slack \| '
+check-further-callbacks = true
+run = 'layout floating'
