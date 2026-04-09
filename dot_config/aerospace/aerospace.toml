@@ -100,8 +100,8 @@ on-mode-changed = []
     # Workspace navigation
     cmd-alt-ctrl-shift-tab = 'workspace-back-and-forth'
 
-    # Mode entry: leader (Hyper+\) and move-to-workspace (Hyper+')
-    cmd-alt-ctrl-shift-backslash = 'mode leader'
+    # Mode entry: leader (Hyper+]) and move-to-workspace (Hyper+')
+    cmd-alt-ctrl-shift-rightSquareBracket = 'mode leader'
     cmd-alt-ctrl-shift-quote = 'mode move'
 
 # Leader mode (Hyper+;): service operations, directional moves, join
