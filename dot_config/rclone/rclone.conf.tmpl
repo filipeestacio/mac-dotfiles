@@ -1,0 +1,6 @@
+[secondbrain]
+type = s3
+provider = AWS
+access_key_id = {{ output "security" "find-generic-password" "-s" "rclone-secondbrain-access-key-id" "-w" | trim }}
+secret_access_key = {{ output "security" "find-generic-password" "-s" "rclone-secondbrain-secret-access-key" "-w" | trim }}
+region = eu-west-1
