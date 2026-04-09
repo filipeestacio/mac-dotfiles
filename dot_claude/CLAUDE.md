@@ -2,7 +2,7 @@
 
 ## Personal Knowledge Base
 
-My personal knowledge base is an Obsidian vault at `~/Documents/secondbrain`. For anything not related to the Aircall workspace (`~/code/aircall`), use this vault as the working context:
+My personal knowledge base is an Obsidian vault at `~/secondbrain`. For anything not related to the Aircall workspace (`~/code/aircall`), use this vault as the working context:
 
 - **Read from it** to find context on my ideas, investigations, computer setup, and notes
 - **Write to it** when I ask you to capture notes, document something, or save research
@@ -23,4 +23,4 @@ Dotfiles are managed with [chezmoi](https://www.chezmoi.io/) and stored in `fili
 | Path | Purpose |
 |------|---------|
 | `~/code/aircall/` | Aircall development workspace (has its own CLAUDE.md) |
-| `~/Documents/secondbrain/` | Personal Obsidian vault for everything else |
+| `~/secondbrain/` | Personal Obsidian vault for everything else |
