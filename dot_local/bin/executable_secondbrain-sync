@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VAULT="$HOME/secondbrain"
+REMOTE="secondbrain:filipeestacio-secondbrain"
+CONFLICTS_DIR="$VAULT/.conflicts"
+LOG_PREFIX="[secondbrain-sync]"
+
+echo "$LOG_PREFIX $(date '+%Y-%m-%d %H:%M:%S') Starting sync..."
+
+# Run bisync with conflict handling
+rclone bisync "$VAULT/" "$REMOTE/" \
+  --conflict-resolve newer \
+  --conflict-suffix ".conflict-$(date '+%Y-%m-%d')" \
+  --exclude ".obsidian/**" \
+  --exclude "CLAUDE.md" \
+  --verbose
+
+# Move any conflict files into .conflicts/ directory
+mkdir -p "$CONFLICTS_DIR"
+find "$VAULT" -maxdepth 10 -name "*.conflict-*" -not -path "$CONFLICTS_DIR/*" -print0 2>/dev/null | \
+  while IFS= read -r -d '' file; do
+    echo "$LOG_PREFIX Moving conflict file: $(basename "$file")"
+    mv "$file" "$CONFLICTS_DIR/"
+  done
+
+echo "$LOG_PREFIX $(date '+%Y-%m-%d %H:%M:%S') Sync complete."
