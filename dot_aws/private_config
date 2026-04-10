@@ -3,7 +3,7 @@ output = json
 
 [sso-session filipeestacio]
 sso_start_url = https://filipeestacio.awsapps.com/start
-sso_region = eu-west-1
+sso_region = eu-west-2
 sso_registration_scopes = sso:account:access
 
 [profile filipeestacio]

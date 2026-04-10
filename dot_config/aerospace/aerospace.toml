@@ -104,7 +104,7 @@ on-mode-changed = []
     cmd-alt-ctrl-shift-rightSquareBracket = 'mode leader'
     cmd-alt-ctrl-shift-quote = 'mode move'
 
-# Leader mode (Hyper+;): service operations, directional moves, join
+# Leader mode (Hyper+]): service operations, directional moves, join
 [mode.leader.binding]
     # Service
     esc = ['reload-config', 'mode main']
