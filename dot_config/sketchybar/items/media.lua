@@ -3,7 +3,7 @@ local icons = require("icons")
 local settings = require("settings")
 
 local media = sbar.add("item", "media", {
-  position = "right",
+  position = "center",
   update_freq = settings.update_freq.media,
   icon = {
     string = icons.media.not_playing,
@@ -18,9 +18,14 @@ local media = sbar.add("item", "media", {
   scroll_texts = true,
 })
 
+local function trim(s)
+  local result = (s or ""):gsub("%s+$", "")
+  return result
+end
+
 local function update_media()
   sbar.exec("nowplaying-cli get title 2>/dev/null", function(title_result)
-    local title = (title_result or ""):gsub("%s+$", "")
+    local title = trim(title_result)
     if title == "" or title == "null" then
       media:set({
         drawing = false,
@@ -29,10 +34,11 @@ local function update_media()
     end
 
     sbar.exec("nowplaying-cli get artist 2>/dev/null", function(artist_result)
-      local artist = (artist_result or ""):gsub("%s+$", "")
+      local artist = trim(artist_result)
 
       sbar.exec("nowplaying-cli get playbackRate 2>/dev/null", function(state_result)
-        local rate = tonumber((state_result or ""):gsub("%s+$", "")) or 0
+        local rate_str = trim(state_result)
+        local rate = tonumber(rate_str) or 0
         local icon_str = rate > 0 and icons.media.pause or icons.media.play
 
         local label_str = title
