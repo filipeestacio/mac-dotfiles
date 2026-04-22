@@ -31,3 +31,15 @@ sso_account_id = 886862221201
 sso_role_name = 13001EngineeringAdminStaging
 region = us-west-2
 output = json
+
+[profile aircall-production]
+sso_session = aircall
+sso_account_id = 555773567328
+sso_role_name = MessagingReadOnlySupport
+region = us-west-2
+output = json
+[profile 809849379942_EngBastionAccess]
+sso_session = aircall
+sso_account_id = 809849379942
+sso_role_name = EngBastionAccess
+region = us-west-2
