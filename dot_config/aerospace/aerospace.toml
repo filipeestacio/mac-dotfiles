@@ -2,12 +2,6 @@
 
 config-version = 2
 
-after-startup-command = ['exec-and-forget sketchybar']
-
-exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
-]
-
 start-at-login = true
 
 enable-normalization-flatten-containers = true
@@ -31,13 +25,12 @@ on-mode-changed = []
 [key-mapping]
     preset = 'qwerty'
 
-# Gap for sketchybar (height = 40)
 [gaps]
     inner.horizontal = 0
     inner.vertical =   0
     outer.left =       0
     outer.bottom =     0
-    outer.top =        40
+    outer.top =        0
     outer.right =      0
 
 # All bindings use Hyper (cmd-alt-ctrl-shift) via CapsLock through Karabiner
