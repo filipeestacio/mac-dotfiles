@@ -54,6 +54,9 @@ alias l.="eza -a | grep -E '^\.'"
 # podman
 alias docker=podman
 
+# aircall
+alias messaging-monitor="~/code/aircall/bin/messaging-monitor.sh"
+
 # bun completions
 [ -s "/Users/filipe/.bun/_bun" ] && source "/Users/filipe/.bun/_bun"
 
