@@ -4,16 +4,26 @@
 
 | Path | Purpose |
 |------|---------|
-| `~/code/aircall/` | Aircall development workspace (has its own CLAUDE.md) |
-| `~/secondbrain/` | Personal Obsidian vault — everything non-Aircall |
+| `~/code/aircall/` | Existing Aircall development workspace (has its own CLAUDE.md) |
+| `~/Documents/Airbrain/` | Airbrain Mind: direct-edit, non-Git Obsidian knowledge and planning vault |
+| `~/aircall/airbrain-runtime/` | Source-controlled Airbrain schemas, validation, migrations and CLI |
+| `~/aircall/airbrain-skills/` | Source-controlled Airbrain cross-harness skills |
+| `~/aircall/airbrain-heartbeat/` | Source-controlled Jira/GitLab reconciliation and dispatch |
+| `~/Library/Application Support/Airbrain/` | Mutable Airbrain logs, indexes, caches and databases |
 
-`~/secondbrain/` is the working context for anything outside `~/code/aircall/`:
+## Airbrain Mind
 
-- **Read from it** to find context on my ideas, investigations, computer setup, and notes
-- **Write to it** when I ask you to capture notes, document something, or save research
-- **Search it** when I reference something I've written before or ask about a topic I may have notes on
+When a request involves Airbrain product direction, prior decisions, continuing plans, capturing ideas, recording learning, or recalling repository-specific context:
 
-When starting a conversation from `~` or any non-Aircall directory and the task involves notes, documentation, or personal knowledge work, default to operating within `~/secondbrain/`.
+1. Read `~/Documents/Airbrain/08-Operations/2026-09-15--airbrain-harness-sop.md`.
+2. Follow `~/Documents/Airbrain/08-Operations/2026-09-15--airbrain-mind-sop.md`.
+3. Search Mind narrowly before creating another record.
+
+Do not consult Mind for every trivial coding question. Repository source and repository-local instructions remain authoritative for current code behavior.
+
+The Mind vault is not a Git repository. Edit it directly; never initialize Git, create worktrees, commits, or merge requests there. Software changes to Runtime, Skills and Heartbeat use their own worktree/test/MR processes.
+
+When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode workflows. For deterministic automation, use the exact plugin-qualified `/airbrain:airbrain-*` command.
 
 ## Dotfiles
 
@@ -22,15 +32,6 @@ Dotfiles are managed with [chezmoi](https://www.chezmoi.io/) and stored in `fili
 - To add/update a dotfile: `chezmoi add <file>` (auto-commits and pushes)
 - To sync local edits back: `chezmoi re-add`
 - Source dir: `~/.local/share/chezmoi/`
-
-## ECC rules precedence
-
-ECC rule packs live at `~/.claude/rules/ecc/` (common, typescript, react, python, ruby). Treat them as **advisory defaults, subordinate** to: (1) this file, (2) the active project's CLAUDE.md, (3) superpowers skills. Where they conflict, the higher authority wins. Specifically:
-
-- **Surgical-changes and no-cosmetic-churn override the ECC quality checklist** (immutability, function/file-size caps, "split long functions"). Don't refactor untouched or unowned code to satisfy an ECC rule.
-- **ECC `patterns.md` "Skeleton Projects / clone best match" does not apply in Aircall** — work inside existing `modules/`/`trees/`.
-- **ECC mandatory-TDD and planner/code-reviewer agents are advisory, not blanket.** Follow project + growth-path guidance on when to apply them.
-- **Project "no new comments" overrides ECC** — ECC permits comments; the project forbids new ones.
 
 ## Coding behavior
 
@@ -48,3 +49,38 @@ Weak criteria ("make it work") force round-trips. Strong criteria ("test X passe
 **Grep before read.** Before opening any file, confirm it contains what you need with grep/search first. Don't read whole files (or directories) to find a thing — locate it, then read the relevant span. Exception: a file you're about to edit and need full context on.
 
 **Tool-call cap.** After ~10 tool calls without visible progress toward the goal, stop and explain the blocker instead of continuing. Sunk cost is not a reason to keep iterating on a broken approach.
+
+**Model delegation.** Sonnet is the default orchestrator. Delegate mechanical, high-volume, low-judgment steps — bulk renames, find/replace across many files, applying a known pattern, scraping command output — to the `mechanic` agent (Haiku). For research or planning that needs deeper reasoning, dispatch the `researcher` agent (Opus) with a tight, self-contained prompt and only the relevant context — not the whole conversation. Keep judgment, design, and risky or irreversible steps yourself.
+
+<!-- icm:start -->
+## Persistent memory (ICM) — MANDATORY
+
+This project uses [ICM](https://github.com/rtk-ai/icm) for persistent memory across sessions.
+You MUST use it actively. Not optional.
+
+### Recall (before starting work)
+```bash
+icm recall "query"                        # search memories
+icm recall "query" -t "topic-name"        # filter by topic
+icm recall-context "query" --limit 5      # formatted for prompt injection
+```
+
+### Store — MANDATORY triggers
+You MUST call `icm store` when ANY of the following happens:
+1. **Error resolved** → `icm store -t errors-resolved -c "description" -i high -k "keyword1,keyword2"`
+2. **Architecture/design decision** → `icm store -t decisions-{project} -c "description" -i high`
+3. **User preference discovered** → `icm store -t preferences -c "description" -i critical`
+4. **Significant task completed** → `icm store -t context-{project} -c "summary of work done" -i high`
+5. **Conversation exceeds ~20 tool calls without a store** → store a progress summary
+
+Do this BEFORE responding to the user. Not after. Not later. Immediately.
+
+Do NOT store: trivial details, info already in CLAUDE.md, ephemeral state (build logs, git status).
+
+### Other commands
+```bash
+icm update <id> -c "updated content"     # edit memory in-place
+icm health                                # topic hygiene audit
+icm topics                                # list all topics
+```
+<!-- icm:end -->
