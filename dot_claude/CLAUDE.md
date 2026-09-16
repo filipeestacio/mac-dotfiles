@@ -25,6 +25,8 @@ The Mind vault is not a Git repository. Edit it directly; never initialize Git, 
 
 When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode Harness-provided workflows. For deterministic automation, use the exact plugin-qualified `/airbrain:airbrain-*` command.
 
+For substantive Airbrain software tasks in a Herdr-managed session, keep coordination in the current pane and delegate implementation to a named subagent in a new pane and dedicated worktree, using the right-sized model. Require it to report its MR and verification back; never delegate merge authority.
+
 ## Dotfiles
 
 Dotfiles are managed with [chezmoi](https://www.chezmoi.io/) and stored in `filipeestacio/mac-dotfiles`. Chezmoi is configured with `autoCommit` and `autoPush` enabled (`~/.config/chezmoi/chezmoi.toml`).

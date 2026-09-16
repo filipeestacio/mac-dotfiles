@@ -19,3 +19,5 @@ Current Airbrain topology:
 - State: `~/Library/Application Support/Airbrain` — mutable logs, caches and databases.
 
 When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode Harness-provided workflows. For deterministic automation, use the exact `/skill:airbrain-*` command rather than relying on natural-language selection.
+
+For substantive Airbrain software tasks in a Herdr-managed session, keep coordination in the current pane and delegate implementation to a named subagent in a new pane and dedicated worktree, using the right-sized model. Require it to report its MR and verification back; never delegate merge authority.
