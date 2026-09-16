@@ -23,7 +23,7 @@ Do not consult Mind for every trivial coding question. Repository source and rep
 
 The Mind vault is not a Git repository. Edit it directly; never initialize Git, create worktrees, commits, or merge requests there. Software changes to Runtime, Skills and Heartbeat use their own worktree/test/MR processes.
 
-When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode workflows. For deterministic automation, use the exact plugin-qualified `/airbrain:airbrain-*` command.
+When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode Harness-provided workflows. For deterministic automation, use the exact plugin-qualified `/airbrain:airbrain-*` command.
 
 ## Dotfiles
 

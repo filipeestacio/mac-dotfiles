@@ -18,4 +18,4 @@ Current Airbrain topology:
 - Heartbeat: `~/aircall/airbrain-heartbeat` — source-controlled reconciler.
 - State: `~/Library/Application Support/Airbrain` — mutable logs, caches and databases.
 
-When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode workflows. For deterministic automation, use the exact `/skill:airbrain-*` command rather than relying on natural-language selection.
+When an installed `airbrain-*` skill matches, invoke it before generic personal, team or AirCode Harness-provided workflows. For deterministic automation, use the exact `/skill:airbrain-*` command rather than relying on natural-language selection.
